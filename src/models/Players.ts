@@ -1,11 +1,6 @@
-class PlayersData {
-  name: string
-  score: number
-
-  constructor(playersName: string, playersScore: number) {
-    this.name = playersName
-    this.score = playersScore
-  }
+interface Players {
+  players: string
+  score: string | undefined
 }
 
-export default PlayersData
+export default Players

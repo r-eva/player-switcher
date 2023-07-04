@@ -1,35 +1,31 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import "./App.css"
 import Switcher from "./components/switcher/Switcher"
-import Players from "./components/players/PlayersData"
-import PlayersData from "./models/Players"
+import PlayersData from "./components/players/PlayersData"
 import PlayersFeature from "./components/players/PlayersFeature"
+import { useLocalStorage } from "./helpers/useLocalStorage"
 
 function App() {
   const [isFirstPlayer, setIsFirstPlayer] = useState(true)
-  const [playersData, setPlayersData] = useState<PlayersData>(
-    new PlayersData("Players 1", 0)
-  )
+  const [player1Score, setPlayer1Score] = useLocalStorage("player1", "0")
+  const [player2Score, setPlayer2Score] = useLocalStorage("player2", "0")
+
+  useEffect(() => {}, [isFirstPlayer])
 
   const plusButtonHandler = () => {
-    const newPlayersData = new PlayersData(
-      playersData.name,
-      playersData.score + 1
-    )
-    setPlayersData(newPlayersData)
+    isFirstPlayer
+      ? setPlayer1Score((Number(player1Score) + 1).toString())
+      : setPlayer2Score((Number(player2Score) + 1).toString())
   }
 
   const minusButonHandler = () => {
-    const newPlayersData = new PlayersData(
-      playersData.name,
-      playersData.score - 1
-    )
-    setPlayersData(newPlayersData)
+    isFirstPlayer
+      ? setPlayer1Score((Number(player1Score) - 1).toString())
+      : setPlayer2Score((Number(player2Score) + 1).toString())
   }
 
   const resetButtonHandler = () => {
-    const resetPlayersData = new PlayersData(playersData.name, 0)
-    setPlayersData(resetPlayersData)
+    isFirstPlayer ? setPlayer1Score("0") : setPlayer2Score("0")
   }
 
   return (
@@ -40,7 +36,10 @@ function App() {
       />
       <div className="player-container">
         <div className="player-container player-container__border">
-          <Players name={playersData.name} score={playersData.score} />
+          <PlayersData
+            score={player1Score}
+            players={isFirstPlayer ? "Players 1" : "Players 2"}
+          />
           <PlayersFeature
             buttonMinusHandler={minusButonHandler}
             buttonPlusHandler={plusButtonHandler}
