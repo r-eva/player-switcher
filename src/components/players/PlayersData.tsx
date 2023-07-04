@@ -1,7 +1,6 @@
 import React from "react"
 import "./Players.css"
 import Players from "../../models/Players"
-import { useEffect } from "react"
 
 const PlayersData: React.FC<Players> = ({ players, score }) => {
   return (

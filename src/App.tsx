@@ -10,8 +10,6 @@ function App() {
   const [player1Score, setPlayer1Score] = useLocalStorage("player1", "0")
   const [player2Score, setPlayer2Score] = useLocalStorage("player2", "0")
 
-  useEffect(() => {}, [isFirstPlayer])
-
   const plusButtonHandler = () => {
     isFirstPlayer
       ? setPlayer1Score((Number(player1Score) + 1).toString())
@@ -37,7 +35,7 @@ function App() {
       <div className="player-container">
         <div className="player-container player-container__border">
           <PlayersData
-            score={player1Score}
+            score={isFirstPlayer ? player1Score : player2Score}
             players={isFirstPlayer ? "Players 1" : "Players 2"}
           />
           <PlayersFeature
