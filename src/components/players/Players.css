@@ -1,0 +1,49 @@
+.player-container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.player-container__border {
+  width: 500px;
+  height: 500px;
+  border: 5px solid lightgray;
+  background: transparent;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 1px;
+}
+
+h1 {
+  font-size: 60px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 40px;
+  text-align: center;
+}
+
+.quantity-button {
+  height: 100px;
+  width: 200px;
+  margin: 0 10px;
+  background: #0d7df5;
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  border-radius: 20px;
+  border: 5px solid lightgray;
+}
+
+.reset-button {
+  margin: 30px;
+  display: block;
+  width: 90%;
+}

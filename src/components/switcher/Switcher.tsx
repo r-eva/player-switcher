@@ -1,22 +1,14 @@
 import React from "react"
 import "./Switcher.css"
+import SwitchProps from "../../models/Switcher"
 
-interface SwitchProps {
-  isFirstPlayer: boolean
-  onChange: () => void
-}
-
-const switcher = (props: SwitchProps) => {
+const Switcher: React.FC<SwitchProps> = ({ isFirstPlayer, onChange }) => {
   return (
     <label className="switch">
-      <input
-        type="checkbox"
-        checked={props.isFirstPlayer}
-        onChange={props.onChange}
-      />
+      <input type="checkbox" checked={isFirstPlayer} onChange={onChange} />
       <span className="slider" />
     </label>
   )
 }
 
-export default switcher
+export default Switcher
