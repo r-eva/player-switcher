@@ -1,11 +1,16 @@
-import React from "react"
+import React, { useContext } from "react"
 import "./Switcher.css"
-import SwitchProps from "../../models/Switcher"
+import UserContext, { UserState } from "../../helpers/store"
 
-const Switcher: React.FC<SwitchProps> = ({ isFirstPlayer, onChange }) => {
+const Switcher = (props: { onChange: () => void }) => {
+  const player = useContext<UserState>(UserContext)
   return (
     <label className="switch">
-      <input type="checkbox" checked={isFirstPlayer} onChange={onChange} />
+      <input
+        type="checkbox"
+        checked={player.isFirstPlayer}
+        onChange={props.onChange}
+      />
       <span className="slider" />
     </label>
   )

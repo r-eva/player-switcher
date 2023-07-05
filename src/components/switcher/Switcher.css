@@ -4,6 +4,7 @@
   width: 60px;
   height: 34px;
   background-color: red;
+  margin-left: auto;
 }
 
 .switch input {

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 
 type ReturnType<T> = [
   T | undefined,
-  React.Dispatch<React.SetStateAction<T | any>>
+  React.Dispatch<React.SetStateAction<T | undefined>>
 ]
 
 export const useLocalStorage = <T,>(
