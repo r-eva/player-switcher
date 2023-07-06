@@ -32,7 +32,11 @@ const PlayersData = () => {
   }
 
   const resetButtonHandler = () => {
-    player.isFirstPlayer ? setPlayer1Score("0") : setPlayer2Score("0")
+    if (player.isFirstPlayer) {
+      setPlayer1Score("0")
+    } else {
+      setPlayer2Score("0")
+    }
   }
   return (
     <div>

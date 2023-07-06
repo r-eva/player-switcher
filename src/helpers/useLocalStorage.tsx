@@ -20,12 +20,15 @@ export const useLocalStorage = <T,>(
   })
 
   useEffect(() => {
-    if (score) {
+    "masuk useeffect"
+    if (score && score !== "0") {
       try {
         localStorage.setItem(key, JSON.stringify(score))
       } catch (err) {
         console.log(err)
       }
+    } else if (score === "0") {
+      localStorage.removeItem(key)
     }
   }, [score, key])
 
