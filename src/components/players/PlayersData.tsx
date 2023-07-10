@@ -1,12 +1,15 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 /* eslint-disable react/destructuring-assignment */
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect, useRef } from 'react';
 import './Players.css';
 import UserContext, { UserState } from '../../helpers/store';
 import useLocalStorage from '../../helpers/useLocalStorage';
 
 function PlayersData() {
   const player = useContext<UserState>(UserContext);
+  const buttonDecrement = useRef<HTMLButtonElement | null>(null);
+  const buttonIncrement = useRef<HTMLButtonElement | null>(null);
+  const numberAnim = useRef<HTMLSpanElement | null>(null);
   const [disableButton, setDisableButton] = useState(true);
   const [player1Score, setPlayer1Score] = useLocalStorage('player1', '0');
   const [player2Score, setPlayer2Score] = useLocalStorage('player2', '0');
@@ -20,16 +23,36 @@ function PlayersData() {
   }, [player.isFirstPlayer, player1Score, player2Score]);
 
   const plusButtonHandler = () => {
+    numberAnim.current?.classList.add('plus-one');
+    if (numberAnim.current != null) {
+      numberAnim.current.innerText = '+1';
+    }
     player.isFirstPlayer
       ? setPlayer1Score((Number(player1Score) + 1).toString())
       : setPlayer2Score((Number(player2Score) + 1).toString());
-    setDisableButton(false);
+    numberAnim.current?.classList.remove('player__decincnumber');
+    setDisableButton(true);
+    setTimeout(() => {
+      numberAnim.current?.classList.remove('plus-one');
+      numberAnim.current?.classList.add('player__decincnumber');
+      setDisableButton(false);
+    }, 500);
   };
 
   const minusButonHandler = () => {
+    numberAnim.current?.classList.add('minus-one');
+    if (numberAnim.current != null) {
+      numberAnim.current.innerText = '-1';
+    }
     player.isFirstPlayer
       ? setPlayer1Score((Number(player1Score) - 1).toString())
       : setPlayer2Score((Number(player2Score) - 1).toString());
+    numberAnim.current?.classList.remove('player__decincnumber');
+    setDisableButton(true);
+    setTimeout(() => {
+      numberAnim.current?.classList.remove('minus-one');
+      numberAnim.current?.classList.add('player__decincnumber');
+    }, 500);
   };
 
   const resetButtonHandler = () => {
@@ -43,13 +66,17 @@ function PlayersData() {
     <div className="player">
       <div className="player__container">
         <h1>{player.isFirstPlayer ? 'Karina Shields' : 'Jeremy Figueroa'}</h1>
-        <h2>{player.isFirstPlayer ? player1Score : player2Score}</h2>
+        <div className="player__score">
+          <h2>Score: {player.isFirstPlayer ? player1Score : player2Score}</h2>
+          <span ref={numberAnim} className="player__decincnumber" />
+        </div>
         <div className="player__plusminus-button">
           <button
             className="quantity-button"
             onClick={minusButonHandler}
             disabled={disableButton}
             type="button"
+            ref={buttonDecrement}
           >
             -
           </button>
@@ -57,6 +84,7 @@ function PlayersData() {
             className="quantity-button"
             onClick={plusButtonHandler}
             type="button"
+            ref={buttonIncrement}
           >
             +
           </button>
