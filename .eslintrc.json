@@ -1,0 +1,14 @@
+{
+  "extends": ["react-app", "react-app/jest", "airbnb", "airbnb-typescript"],
+  "parserOptions": {
+    "parser": ["@typescript-eslint/parser", "./tsconfig.json"],
+    "ecmaFeatures": {
+      "jsx": false
+    },
+    "project": "./tsconfig.json"
+  },
+  "rules": {
+    "no-unused-expressions": "off",
+    "@typescript-eslint/no-unused-expressions": "error"
+  }
+}

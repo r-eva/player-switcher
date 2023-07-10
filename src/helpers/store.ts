@@ -1,11 +1,11 @@
-import { createContext } from "react"
+import { createContext } from 'react';
 
 const initialState = {
   isFirstPlayer: true,
-}
+};
 
-export type UserState = typeof initialState
+export type UserState = typeof initialState;
 
-const context = createContext<typeof initialState>(initialState)
+const context = createContext<typeof initialState>(initialState);
 
-export default context
+export default context;

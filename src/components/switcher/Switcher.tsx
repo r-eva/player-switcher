@@ -1,19 +1,30 @@
-import React, { useContext } from "react"
-import "./Switcher.css"
-import UserContext, { UserState } from "../../helpers/store"
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable react/destructuring-assignment */
+import React, { useContext } from 'react';
+import './Switcher.css';
+import UserContext, { UserState } from '../../helpers/store';
 
-const Switcher = (props: { onChange: () => void }) => {
-  const player = useContext<UserState>(UserContext)
+function Switcher(props: { onChange: () => void }) {
+  const player = useContext<UserState>(UserContext);
   return (
-    <label className="switch">
+    <div className="switcher">
       <input
+        id="toggle"
+        className="switcher__input"
         type="checkbox"
-        checked={player.isFirstPlayer}
+        role="switch"
+        name="toggle"
+        value="on"
+        aria-checked={player.isFirstPlayer}
         onChange={props.onChange}
       />
-      <span className="slider" />
-    </label>
-  )
+      <label htmlFor="toggle" className="switcher__label">
+        <span className="switcher__label-slot">PLAYER 1</span>
+        <span className="switcher__label-slot">PLAYER 2</span>
+      </label>
+      <div className="switcher__curtain" />
+    </div>
+  );
 }
 
-export default Switcher
+export default Switcher;

@@ -1,7 +1,6 @@
-.app-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+body {
   padding: 20px;
-  color: #8184a1;
+  background: #575757;
+  overflow: hidden;
+  color: #fff;
 }

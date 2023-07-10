@@ -1,46 +1,102 @@
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-  background-color: red;
-  margin-left: auto;
+:root {
+  font-size: 1.5em;
 }
 
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
+.switcher {
+  display: flex;
+  align-items: center;
 }
 
-.slider {
+.switcher__input,
+.switcher__input::before,
+.switcher__label-slot,
+.switcher__curtain {
+  transition-property: all;
+  transition-duration: 0.25s;
+  transition-timing-function: ease-in, cubic-bezier(0.6, 0.2, 0.4, 1.5), linear;
+}
+
+.switcher__input::before,
+.switcher__label,
+.switcher__label-slot {
+  display: block;
+}
+.switcher__input:before,
+.switcher__curtain {
   position: absolute;
-  cursor: pointer;
+}
 
+.switcher__input:checked,
+.switcher__curtain {
+  background-color: #2b7f3a;
+}
+
+.switcher__input:focus {
+  outline: transparent;
+}
+
+.switcher__input {
+  color: #fff;
+  border-radius: 0.75em;
+  box-shadow: 0 0 0 0.1em inset;
+  cursor: pointer;
+  position: relative;
+  margin-right: 0.25em;
+  width: 2em;
+  height: 1.1em;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  font: 1em "Verdana, Geneva, Tahoma, sans-serif";
+  line-height: 1.5;
+}
+
+.switcher__input::before {
+  background: currentColor;
+  border-radius: 50%;
+  content: "";
+  top: 0.2em;
+  left: 0.2em;
+  width: 0.7em;
+  height: 0.7em;
+}
+
+.switcher__input:checked::before {
+  transform: translateX(0.9em);
+}
+
+.switcher__input:checked ~ .switcher__label .switcher__label-slot,
+.switcher__label-slot:nth-child(2) {
+  transform: translateY(-50%) scaleY(0);
+}
+
+.switcher__input:checked ~ .switcher__label .switcher__label-slot:nth-child(2) {
+  transform: translateY(-100%) scaleY(1);
+}
+.switcher__input:checked ~ .switcher__curtain {
+  transform: scaleX(1);
+}
+.switcher__label {
+  color: transparent;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  height: 1em;
+  -webkit-text-stroke: 0.05em #fff;
+}
+.switcher__label-slot {
+  transform-origin: 50% 0;
+}
+.switcher__label-slot:nth-child(2) {
+  transform-origin: 50% 100%;
+}
+.switcher__curtain {
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-
-  background-color: red;
-  transition: 0.4s;
-}
-
-.slider::before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  transition: 0.4s;
-}
-
-input:checked + .slider {
-  background-color: #2196f3;
-}
-
-input:checked + .slider::before {
-  transform: translateX(26px);
+  width: 100%;
+  height: 100%;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  z-index: -1;
 }

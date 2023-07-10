@@ -1,36 +1,35 @@
-import { useState, useEffect } from "react"
+/* eslint-disable consistent-return */
+import { useState, useEffect } from 'react';
 
 type ReturnType<T> = [
   T | undefined,
-  React.Dispatch<React.SetStateAction<T | undefined>>
-]
+  React.Dispatch<React.SetStateAction<T | undefined>>,
+];
 
-export const useLocalStorage = <T,>(
-  key: string,
-  initialValue?: T
-): ReturnType<T> => {
+function useLocalStorage<T>(key: string, initialValue?: T): ReturnType<T> {
   const [score, setScore] = useState<T | undefined>(() => {
-    if (!initialValue) return
+    if (!initialValue) return;
     try {
-      const value = localStorage.getItem(key)
-      return value ? JSON.parse(value) : initialValue
+      const value = localStorage.getItem(key);
+      return value ? JSON.parse(value) : initialValue;
     } catch (err) {
-      return initialValue
+      return initialValue;
     }
-  })
+  });
 
   useEffect(() => {
-    "masuk useeffect"
-    if (score && score !== "0") {
+    if (score && score !== '0') {
       try {
-        localStorage.setItem(key, JSON.stringify(score))
+        localStorage.setItem(key, JSON.stringify(score));
       } catch (err) {
-        console.log(err)
+        console.log(err);
       }
-    } else if (score === "0") {
-      localStorage.removeItem(key)
+    } else if (score === '0') {
+      localStorage.removeItem(key);
     }
-  }, [score, key])
+  }, [score, key]);
 
-  return [score, setScore]
+  return [score, setScore];
 }
+
+export default useLocalStorage;
