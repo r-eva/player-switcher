@@ -8,12 +8,15 @@ function App() {
   const [player, setPlayer] = useState<UserState>({
     isFirstPlayer: true,
   });
+
   return (
     <UserContext.Provider value={player}>
       <Switcher
-        onChange={() => setPlayer({
-          isFirstPlayer: !player.isFirstPlayer,
-        })}
+        onChange={() =>
+          setPlayer({
+            isFirstPlayer: !player.isFirstPlayer,
+          })
+        }
       />
       <PlayersData />
     </UserContext.Provider>

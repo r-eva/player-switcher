@@ -1,5 +1,13 @@
 {
-  "extends": ["react-app", "react-app/jest", "airbnb", "airbnb-typescript"],
+  "extends": [
+    "react-app",
+    "react-app/jest",
+    "airbnb",
+    "airbnb-typescript",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
+  ],
   "parserOptions": {
     "parser": ["@typescript-eslint/parser", "./tsconfig.json"],
     "ecmaFeatures": {
@@ -7,8 +15,10 @@
     },
     "project": "./tsconfig.json"
   },
+  "plugins": ["react", "@typescript-eslint", "prettier"],
   "rules": {
     "no-unused-expressions": "off",
-    "@typescript-eslint/no-unused-expressions": "error"
+    "@typescript-eslint/no-unused-expressions": "error",
+    "no-console": "off"
   }
 }

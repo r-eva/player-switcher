@@ -48,14 +48,14 @@
   -moz-appearance: none;
   appearance: none;
   -webkit-tap-highlight-color: transparent;
-  font: 1em "Verdana, Geneva, Tahoma, sans-serif";
+  font: 1em 'Verdana, Geneva, Tahoma, sans-serif';
   line-height: 1.5;
 }
 
 .switcher__input::before {
   background: currentColor;
   border-radius: 50%;
-  content: "";
+  content: '';
   top: 0.2em;
   left: 0.2em;
   width: 0.7em;
