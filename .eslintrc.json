@@ -6,7 +6,8 @@
     "airbnb-typescript",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "plugin:jsx-a11y/recommended"
   ],
   "parserOptions": {
     "parser": ["@typescript-eslint/parser", "./tsconfig.json"],
@@ -15,7 +16,7 @@
     },
     "project": "./tsconfig.json"
   },
-  "plugins": ["react", "@typescript-eslint", "prettier"],
+  "plugins": ["react", "@typescript-eslint", "prettier", "jsx-a11y"],
   "rules": {
     "no-unused-expressions": "off",
     "@typescript-eslint/no-unused-expressions": "error",

@@ -7,7 +7,7 @@ import UserContext, { UserState } from '../../helpers/store';
 function Switcher(props: { onChange: () => void }) {
   const player = useContext<UserState>(UserContext);
   return (
-    <div className="switcher">
+    <div className="switcher" role="navigation">
       <input
         id="toggle"
         className="switcher__input"

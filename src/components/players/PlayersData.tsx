@@ -4,6 +4,8 @@ import React, { useContext, useState, useEffect, useRef } from 'react';
 import './Players.css';
 import UserContext, { UserState } from '../../helpers/store';
 import useLocalStorage from '../../helpers/useLocalStorage';
+import women from './woman_avatar.png';
+import men from './men_avatar.png';
 
 function PlayersData() {
   const player = useContext<UserState>(UserContext);
@@ -63,9 +65,14 @@ function PlayersData() {
     }
   };
   return (
-    <div className="player">
+    <div className="player" role="main">
+      <img
+        src={player.isFirstPlayer ? men : women}
+        alt="Player Avatar"
+        className="player__img-avatar"
+      />
       <div className="player__container">
-        <h1>{player.isFirstPlayer ? 'Karina Shields' : 'Jeremy Figueroa'}</h1>
+        <h1>{player.isFirstPlayer ? 'Jeremy Figueroa' : 'Karina Shields'}</h1>
         <div className="player__score">
           <h2>Score: {player.isFirstPlayer ? player1Score : player2Score}</h2>
           <span ref={numberAnim} className="player__decincnumber" />

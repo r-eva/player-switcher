@@ -48,7 +48,8 @@
   -moz-appearance: none;
   appearance: none;
   -webkit-tap-highlight-color: transparent;
-  font: 1em 'Verdana, Geneva, Tahoma, sans-serif';
+  font-size: 1em;
+  font-variant: 'Verdana, Geneva, Tahoma, sans-serif';
   line-height: 1.5;
 }
 
