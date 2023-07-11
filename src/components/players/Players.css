@@ -45,7 +45,7 @@ h2 {
   height: 50px;
   width: 120px;
   margin: 0 10px;
-  background: #0d7df5;
+  background: #088395;
   color: white;
   font-size: 30px;
   font-weight: bold;
@@ -60,7 +60,7 @@ h2 {
 }
 
 .reset-button {
-  background: red;
+  background: #05bfdb;
   padding: 10px;
   margin: 20px 10px;
   color: white;
@@ -73,7 +73,7 @@ h2 {
 
 /* Decrement increment animation */
 .plus-one {
-  color: white;
+  color: #00ffca;
   font-weight: bold;
   position: absolute;
   right: -20px;
