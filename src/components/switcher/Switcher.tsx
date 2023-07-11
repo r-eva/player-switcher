@@ -14,13 +14,20 @@ function Switcher(props: { onChange: () => void }) {
         type="checkbox"
         role="switch"
         name="toggle"
-        value="on"
+        value={player.isFirstPlayer ? 'First Player' : 'Second Player'}
         aria-checked={player.isFirstPlayer}
+        aria-labelledby={
+          player.isFirstPlayer ? 'input-label-player-1' : 'input-label-player-2'
+        }
         onChange={props.onChange}
       />
       <label htmlFor="toggle" className="switcher__label">
-        <span className="switcher__label-slot">PLAYER 1</span>
-        <span className="switcher__label-slot">PLAYER 2</span>
+        <span className="switcher__label-slot" id="input-label-player-1">
+          PLAYER 1
+        </span>
+        <span className="switcher__label-slot" id="input-label-player-2">
+          PLAYER 2
+        </span>
       </label>
       <div className="switcher__curtain" />
     </div>

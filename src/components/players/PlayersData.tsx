@@ -68,7 +68,9 @@ function PlayersData() {
     <div className="player" role="main">
       <img
         src={player.isFirstPlayer ? men : women}
-        alt="Player Avatar"
+        alt={
+          player.isFirstPlayer ? 'Player 1 Man Avatar' : 'Player 2 Women Avatar'
+        }
         className="player__img-avatar"
       />
       <div className="player__container">
@@ -84,6 +86,7 @@ function PlayersData() {
             disabled={disableButton}
             type="button"
             ref={buttonDecrement}
+            name="Decrement"
           >
             -
           </button>
@@ -92,6 +95,7 @@ function PlayersData() {
             onClick={plusButtonHandler}
             type="button"
             ref={buttonIncrement}
+            name="Increment"
           >
             +
           </button>
@@ -100,6 +104,7 @@ function PlayersData() {
           className="reset-button"
           onClick={resetButtonHandler}
           type="button"
+          name="Reset"
         >
           Reset
         </button>
